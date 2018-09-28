@@ -41,7 +41,7 @@ git checkout -b fix/logging
 git checkout -b fix/slug-56
 ```
 
-where `slug` is the project slug from the issue tracker and `56` is the issue 
+where `slug` is the project slug from the issue tracker and `56` is the issue
 number.
 
 ### 2. Commits
@@ -81,7 +81,7 @@ Anatomy of the full commit is as follows:
 
 ```git
 <title>
-# Commit title is a *title* - capitalized, short (50 chars or less) summary
+# Commit title is a *title* - capitalized, short (70 chars or less) summary
 # without the dot at the end, written in imperative present tense: "Fix bug",
 # not "Fixed a bug.".
 
@@ -149,8 +149,8 @@ Some commit title ISSUE-51 #resolve #time 2h30m
 
 * Never rewrite special branches, e.g. `master` (or any other used by CI).
 
-* Keep the history *clean* and *simple*. Before pushing any branch to the 
-  public always ensure that it conforms to the style-guide. If it doesn't: 
+* Keep the history *clean* and *simple*. Before pushing any branch to the
+  public always ensure that it conforms to the style-guide. If it doesn't:
   squash, rebase, reword commits as necessary.
 
 ### 4. Misc.
