@@ -2,13 +2,13 @@
 
 ### Overview
 
-This document gives concise account of the essential Git practices
-used in Makimo. Before reading this document, ensure you've read the following:
+This document gives a concise account of the essential Git practices
+used at Makimo. Before reading this document, ensure you've read the following:
 
 1. [*Gitflow Workflow*](
 https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow)
 
-Git-flow is a standard practice at  Makimo. As such, its solid understanding is
+Git-flow is a standard practice at Makimo. As such, its solid understanding is
 required. Supplementary reading:
 
 1. [*How to Get Your Change Into the Linux
@@ -19,9 +19,9 @@ https://confluence.atlassian.com/fisheye/using-smart-commits-298976812.html)
 
 ### 1. Branches
 
-* Whether implementing features or fixing bugs - always use new branch.
+* Whether implementing features or fixing bugs - always use a new branch.
   Whenever branching, choose _short_ and _descriptive_ names. Branch names
-  are of the form `<type>/<name>`, where name is comprised of words separated
+  are of the form `<type>/<name>`, where the name is comprised of words separated
   with hyphens (not underscores). Example:
 
 ```git
@@ -41,14 +41,15 @@ git checkout -b fix/logging
 git checkout -b fix/slug-56
 ```
 
-where `slug` is the project slug and `56` is the issue number.
+where `slug` is the project slug from the issue tracker and `56` is the issue
+number.
 
 ### 2. Commits
 
 * Commit represents atomic change (on a conceptual level) made to the repository.
-  It goes without saying that single commit should record single, self-contained
+  It goes without saying that single commit should record a single, self-contained
   change. Readability of the git history crucially depends on that. Therefore,
-  commits such as these one should be avoided:
+  commits such as these ones should be avoided:
 
 ```git
 3676983 Various fixes
@@ -64,7 +65,7 @@ b6d9a02 Add that feature
 ```
 
 * If you've made a mistake or forgot about something and pushed to the
-  origin, you can rewritte published history but *only* if you're working
+  origin, you can rewrite published history but *only* if you're working
   on a private branch and are positive that no one is using it.
 
 * Generally speaking, you should avoid commiting removing forgotten prints
@@ -80,7 +81,7 @@ Anatomy of the full commit is as follows:
 
 ```git
 <title>
-# Commit title is a *title* - capitalized, short (50 chars or less) summary
+# Commit title is a *title* - capitalized, short (70 chars or less) summary
 # without the dot at the end, written in imperative present tense: "Fix bug",
 # not "Fixed a bug.".
 
@@ -142,16 +143,15 @@ Some commit title ISSUE-51 #resolve #time 2h30m
   pulled a copy of the history being rewritten, conflicts emerge. To save
   everyone a headache, stick by this rule.
 
-* However, you *can* rewrite private branch *before* publishing it to
+* However, you *can* rewrite private branches *before* publishing it to
   `develop` or `master`. It's easy to make mistakes - if you're 100% positive
   that your branch is not used by anyone on the team, feel free to tweak it.
 
 * Never rewrite special branches, e.g. `master` (or any other used by CI).
 
-* Keep the history *clean* and *simple*. Before pushing branch to public
-  always ensure that it conforms to the style-guide. If it doesn't: squash,
-  rebase, reword commits as necessary.
-
+* Keep the history *clean* and *simple*. Before pushing any branch to the
+  public always ensure that it conforms to the style-guide. If it doesn't:
+  squash, rebase, reword commits as necessary.
 
 ### 4. Misc.
 

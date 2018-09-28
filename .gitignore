@@ -1,104 +1,131 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+### Emacs ###
+# -*- mode: gitignore; -*-
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
 
-# C extensions
-*.so
+# Org-mode
+.org-id-locations
+*_archive
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
+# flymake-mode
+*_flymake.*
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# elpa packages
+/elpa/
+
+# reftex files
+*.rel
+
+# AUCTeX auto folder
+/auto/
+
+# cask packages
+.cask/
 dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# Flycheck
+flycheck_*.el
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# server auth directory
+/server/
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+# projectiles files
+.projectile
 
-# Translations
-*.mo
-*.pot
+# directory configuration
+.dir-locals.el
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
+### Linux ###
 
-# Flask stuff:
-instance/
-.webassets-cache
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
 
-# Scrapy stuff:
-.scrapy
+# KDE directory preferences
+.directory
 
-# Sphinx documentation
-docs/_build/
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
 
-# PyBuilder
-target/
+# .nfs files are created when an open file is removed but is still being accessed
+.nfs*
 
-# Jupyter Notebook
-.ipynb_checkpoints
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# pyenv
-.python-version
+# Icon must end with two \r
+Icon
 
-# celery beat schedule file
-celerybeat-schedule
+# Thumbnails
+._*
 
-# SageMath parsed files
-*.sage.py
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
 
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
-# Spyder project settings
-.spyderproject
-.spyproject
+### Vim ###
+# Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
 
-# Rope project settings
-.ropeproject
+# Session
+Session.vim
 
-# mkdocs documentation
-/site
+# Temporary
+.netrwhist
+# Auto-generated tag files
+tags
+# Persistent undo
+[._]*.un~
 
-# mypy
-.mypy_cache/
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
+
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
