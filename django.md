@@ -1,6 +1,6 @@
-# Django-specific conventions
+## Django-specific conventions
 
-## Project bootstrapping
+### Project bootstrapping
 
 Use `django-template`.
 
@@ -8,7 +8,7 @@ Use `django-template`.
 cookiecutter git@bitbucket.org:makimo/django-template.git
 ```
 
-## Templates
+### Templates
 
 Nobody cares whether HTML in the browser is indented nicely or not. So the
 focus shifts to make templates programmer-friendly, treating logical blocks 
