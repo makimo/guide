@@ -166,16 +166,152 @@ truth_value = (
 
 #### 6. Blank lines
 
-1. Two blank lines between top-level objects (classes, functions).
-2. Module-level variables should be separated from imports with one blank line.
-3. Methods within class declarations are separated with one blank line.
-4. No lines between begginning of the class declaration and first
-method/variable.
-5. No blank lines between docstring and first next statement with the exception
-of class docstring if no class variables are declared.
-6. If dunder variables are defined, separated them with one blank line.
-7. One blank line between each import section (stdlib, 3rd-party, local).
+As a rule of thumb, readability is preferable over smaller line count.
+It is, therefore, desirable to write code with room to breathe.
+Blank lines are used to that effect. The following section describes
+_necessary_ and _sufficient_ rules for inserting them.
 
+##### 6.1. Two blank lines between top-level objects (classes, functions, variables).
+
+```python
+def foo(): pass
+
+
+class Foo:
+    pass
+
+
+class Bar:
+    pass
+```
+
+##### 6.2. Module-level variables should be separated from imports with one blank line.
+
+```python
+import sys
+import argparse
+
+SOME_MODULE_VARIABLE = 'string'
+```
+
+##### 6.3. Methods within class declarations are separated with one blank line.
+
+```python
+class Foo:
+    def foo(self):
+        pass
+
+    def bar(self):
+        pass
+```
+
+##### 6.4. No lines between begginning of the class declaration and first method/variable.
+
+```python
+def class Foo:
+    some_variable = null
+
+def class Bar:
+    def foo(self):
+        pass
+```
+
+##### 6.5. No blank lines between docstring and first next statement with the exception of class docstring if no class variables are declared.
+
+```python
+def class Foo:
+    """
+    <docstring>
+    """
+    some_variable = null
+
+def class Bar:
+    """
+    <docstring>
+    """
+
+    def foo(self):
+        pass
+```
+
+##### 6.6. If dunder variables are defined, separated them with one blank line.
+
+```python
+__version__ = '1.6.7'
+__all__ = ('Foo, 'Bar')
+
+import sys
+```
+
+##### 6.7. One blank line between each import section (stdlib, 3rd-party, local).
+
+```python
+import sys
+import asyncio
+
+from django import something
+
+from .local_file import LocalClass
+```
+
+##### 6.8. One blank line before and after statements that open a new block (e.g. if-statement), with exception of statements at the first line of their block
+
+```python
+if a:
+    return True
+
+b = x or None
+
+if b is not None:
+    do_work()
+else:
+    def foo(): # No blank here
+        pass
+
+return False
+```
+
+If writing an if-statement with multiple else-branches and repetetive code, you
+*can* throw in an extra line before each branch:
+
+```python
+if something0:
+    a = 1 + 51 + 71 + 545 + 963 + 4
+    b = 5 + 87 + 64 + 91 + 35 + 667
+    c = 25 + 64 + 8 + 23 + 947 + 37
+
+elif something1:
+    a = 1 + 51 + 71 + 545 + 963 + 4
+    b = 5 + 87 + 64 + 91 + 35 + 667
+    c = 25 + 64 + 8 + 23 + 947 + 37
+
+elif something2:
+    a = 1 + 51 + 71 + 545 + 963 + 4
+    b = 5 + 87 + 64 + 91 + 35 + 667
+    c = 25 + 64 + 8 + 23 + 947 + 37
+```
+
+##### 6.9. No blank lines between docstring and first statement in method/function
+
+```python
+def foo():
+    """
+    <docstring>
+    """
+    first = 'statement'
+```
+
+##### 6.10. Two blank lines after import section (or module variable)
+
+```python
+import sys
+
+
+class Foo:
+   pass
+```
+
+---
 Putting it all together:
 
 ```python
@@ -183,12 +319,10 @@ Putting it all together:
 Module docstring
 """
 __version__ = '1.6.7'
-__all__ = ('Foo, 'Bar')
+__all__ = ('Foo', 'Bar')
 
 import sys
 import asyncio
-
-from .local_file import LocalClass
 
 MODULE_VARIABLE = 777
 
