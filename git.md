@@ -153,7 +153,184 @@ Some commit title ISSUE-51 #resolve #time 2h30m
   public always ensure that it conforms to the style-guide. If it doesn't:
   squash, rebase, reword commits as necessary.
 
-### 4. Misc.
+### 4. Rewriting history
+
+#### 4.1 Rewording last commit
+
+Perhaps the most straightforward history rewrite is changing the commit
+message. If the commit in question is the *last* one, the task is trivial:
+
+```git
+git commit --amend
+```
+
+This command will open an editor (configured with `git config core.editor`)
+with last commit for you to modify. After the changes are saved, git will
+update your *local repository*.
+
+---
+Please note that this will only work if you didn't push your changes to the
+remote. In other cases, you will have to use push --force which is invasive
+and dangerous operation. Before pushing your changes do your best to make sure
+they are ready to be published to avoid the necessity to rewrite the history.
+
+#### 4.2 Adding/removing changes to/from last commit
+
+If you forgot to include a change in the last commit, or if you want to remove
+something, you can do it with the following commands:
+
+```git
+git add [<file>,]
+git rm  [<file>,]
+git commit --amend --no-edit
+```
+
+---
+As was the case in the previous paragraph, in this situation too you have to
+be sure that commit was not pushed to the remote.
+
+#### 4.3 Rebasing
+
+##### 4.3.1 Usage
+
+In order to change commits further back in the history, we will have to use
+more advanced tools. Enter `rebase`. `git rebase` re-applies commits,
+one by one, from your current branch onto the HEAD they were originally based
+on. When used in the interactive mode, `rebase` works as follows:
+
+1. You specify how far into history you want to go. You can either
+a specify single commit or a relative count from the `HEAD` (`i` stands for
+_interactive_):
+
+```git
+git rebase -i d8b9bd # Rewrite from the specified commit to HEAD
+git rebase -i HEAD~3 # Rewrite three last commits
+```
+
+2. In the next step, `git` opens up an editor with list of commits which looks
+something like this (for `git rebase -i HEAD~3`):
+
+```git
+pick f7f3f6d changed my name a bit
+pick 310154e updated README formatting and added blame
+pick a5f4a0d added cat-file
+
+# Rebase 710f0f8..a5f4a0d onto 710f0f8
+#
+# Commands:
+#  p, pick = use commit
+#  r, reword = use commit, but edit the commit message
+#  e, edit = use commit, but stop for amending
+#  s, squash = use commit, but meld into previous commit
+#  f, fixup = like "squash", but discard this commit's log message
+#  x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+Here you can tell git how you want to proceed with your rewrite. Think of it
+as a script. In this script you can:
+
+1. `pick` - To "pick" a commit means to include it in the rewrite. If you were
+to remove the line `pick a5f4a0d added cat-file` from the script, git would
+remove this commit from the history.
+
+2. `edit` - This tells the script to stop at the relevent commit and let you
+apply changes you make to make to it. When git stops the script, you will see
+a message similar to the following:
+
+```git
+$ git rebase -i HEAD~3
+Stopped at f7f3f6d... changed my name a bit
+You can amend the commit now, with
+
+       git commit --amend
+
+Once you’re satisfied with your changes, run
+
+       git rebase --continue
+```
+
+At which point you can whatever you want with the commit and all changes
+will be included in the rebase.
+
+3. `reword` - This is a shorthand for `edit` which, instead of giving you
+full control, asks only for the new message for the commit.
+
+4. `squash` - Squashing a commit means "melding" it with the previous one.
+When you squash two commits, git will combine the changes and the messages
+and ask you for the new one. With `squash` it is crucial to understand the
+order of operations. If you're unsure which commit gets squashed with which
+commit, please be sure to read section 4.4.
+
+5. `fixup` - Version on `squash` which completely discards message of the
+commit being squashed. This is handy when you made a change, realised you
+forgot about something and added the fix in the next commit. In such case
+you want to discard "fixed typo from the previous commit"-type message.
+
+6. `exec` - This option allows to run a command *between* two commits in the
+rebase script. As such, it does not tag any specific commit - it is inserted
+between the two. Let's say we want to run `echo "Woah, this is cool"` after
+some commit. Then, we would write:
+
+```git
+edit 310154e updated README formatting and added blame
+exec echo "Woah, this is cool"
+squash a5f4a0d added cat-file
+```
+
+`exec` can also be given the option to `rebase` with `--exec`. In such case,
+specified command will be run after _every_ step in the rebase script.
+
+---
+
+Additionally, by re-ordering commits in the rebase script, you can re-order
+commits in the history (if applicable).
+
+##### 4.3.2 Order of operations
+
+It is important to keep in mind that commits in the rebase script are listed
+in the reverse order (with respect to `git log`):
+
+```git
+git log --pretty=format:"%h %s" HEAD~3..HEAD
+a5f4a0d added cat-file
+310154e updated README formatting and added blame
+f7f3f6d changed my name a bit
+```
+
+Notice the reverse order of the rebase script in the previous paragrah.
+The interactive rebase generates a script which is going to run starting
+with the commit at the up and ending with the commit at the bottom. Therefore,
+for options such as `squash` and `fixup`, previous commit it the commit above.
+
+##### 4.3.3 Precautions
+
+Because `git rebase` changes hashes of the commits being rewritten, it is only
+safe when working with your local repository.
+
+Generally, you should not be rewriting remote branches. However, if you're sure
+that no one is using the branch (e.g. you're working on a private feature
+branch) you can apply rebase this with `push --force` (!).
+
+##### 4.3.4 Further reading
+
+1. [Git Tools - Rewriting History](
+https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
+
+2. [Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History](
+https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
+
+3. [git-rebase man pag](https://git-scm.com/docs/git-rebase)
+
+
+### 5. Misc.
 
 * **Always** test before you push. Do not push something that may break.
 
