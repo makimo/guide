@@ -30,6 +30,10 @@ git checkout -b fix/rabbitmq-dist-config
 
 # Bad, too vague.
 git checkout -b fix/logging
+
+# Bad, too specific. It's better to use more human-readable
+# name and put issue reference in the title/description instead.
+git checkout -b feature/PROJ-1234
 ```
 
 * Most common branch types are `feature`, `improvement`, `fix`, `docs`,
