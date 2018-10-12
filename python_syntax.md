@@ -370,9 +370,10 @@ https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-do
 4. [Example Google Style Python Docstrings](
 https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
 
-Regarding usage of comments and docstrings, the basic rule is this:
-Whenever documenting public interface (not necessarily for end-user) use
-docstrings; when explaining inner-workings of the code - use comments.
+The rule of thumb is to use docstrings whenever documenting public interface.
+Comments should be left to such cases as laying out a structure and inner-workings
+of the code with the expectation that they help the programmer modifying this
+particular file or module.
 
 #### 8.1 Google Style Example
 
