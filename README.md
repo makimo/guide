@@ -14,5 +14,5 @@ and project management process, such as Git or Linux commandline.
 
 1. [General Recommendations](https://github.com/makimo/style-guide/blob/master/general.md)
 2. [Django](https://github.com/makimo/style-guide/blob/master/django.md)
-3. [Python](https://github.com/makimo/style-guide/blob/master/python_syntax.md)
+3. [Python](https://github.com/makimo/style-guide/blob/master/python.md)
 4. [Git](https://github.com/makimo/style-guide/blob/master/git.md)
