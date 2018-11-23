@@ -87,15 +87,22 @@ Anatomy of the full commit is as follows:
 <title>
 # Commit title is a *title* - capitalized, short (70 chars or less) summary
 # without the dot at the end, written in imperative present tense: "Fix bug",
-# not "Fixed a bug.".
+# not "Fixed a bug." or "fixed a bug".
 
 <description>
 # More detailed explanatory text, if necessary. Usually about few sentences,
 # but may require more explainig (e.g. if solving intricate bug or
 # describing new feature). Further paragraphs come after blank lines.
 
-# - Bullet points are okay, too
-# - Second line
+# Bullet points are okay too, examples:
+#
+# - A fix to a quite embarassing issue where raw_copy_to_user() was
+#   implemented with asm_copy_from_user() (and vice versa).
+#
+# - Improvements to our makefile to allow flat binaries to be generated.
+#
+# NOTE: Description, including bullet points, consists of normal sentences.
+# Therefore, usual English grammar applies.
 
 <meta-information>
 # This section is reserved for additional information, such as who signed-off
