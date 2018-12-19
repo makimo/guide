@@ -48,6 +48,38 @@ git checkout -b fix/slug-56
 where `slug` is the project slug from the issue tracker and `56` is the issue
 number.
 
+* When feature branch is removed from the remote (usually origin) it is
+  a good idea to also remove local branches to keep repository clean and
+  fast. To remove stale branches from local repository first we need to
+  prune it (in other words: remove upstream references to branches that
+  have been deleted on the `origin`):
+
+```git
+git fetch --prune <remote_name>
+```
+
+  This will fetch all the refs from `<remote_name>` and prune the stale
+  references. There is also possibility to prune references without
+  fetching:
+
+```git
+git remote prune <remote_name>
+```
+
+  It is important to remember that pruning will not remove local
+  branches. To do this, checkout one of the main branches (`master` or
+  `develop`) and run the following script:
+
+```bash
+git fetch --prune <remote_name> && git branch -vv \
+    | grep ': gone]' \
+    | awk '{print $1}' \
+    | xargs git branch -d
+```
+
+> NOTE: this will only work on systems on which `grep`, `xargs` and
+> `awk` are available.
+
 ### 2. Commits
 
 * Commit represents atomic change (on a conceptual level) made to the repository.
@@ -339,7 +371,6 @@ https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History)
 https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-history)
 
 3. [git-rebase man pag](https://git-scm.com/docs/git-rebase)
-
 
 ### 5. Misc.
 
