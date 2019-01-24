@@ -177,7 +177,7 @@ where `<command>` is a smart commit command (see 3. in supplementary reading
 above). For example:
 
 ```git
-Some commit title ISSUE-51 #resolve #time 2h30m
+Fix nasty little bug ISSUE-51 #resolve #time 2h30m
 ```
 
 ### 3. Merging
