@@ -372,7 +372,33 @@ https://robots.thoughtbot.com/git-interactive-rebase-squash-amend-rewriting-hist
 
 3. [git-rebase man pag](https://git-scm.com/docs/git-rebase)
 
-### 5. Misc.
+### 5. Work-In-Progress
+
+Sometimes during work on a large feature, there is a necessity to commit
+partially finished job (for example: because the workday is ending and
+you want to back up your work in case of an outage). In such cases, the
+commits should be marked with `WIP:` prefix in the title. It would be
+a good idea to include the short summary for finished parts of the task
+in the commit description.
+
+```
+WIP: Add some long, mundane feature
+
+So far the I have refactored the `MainView` and `SecondaryView` to get
+them ready for this awesome new feature.
+```
+
+Such commits can be **only** pushed to the private feature branches and
+**must** be removed (with rebase or amending commits) before the pull
+request is created. **The existence of `WIP:` commits in the history of
+revised changes may be a reason of declining the pull request.**
+
+Although the existence of `WIP:` commits on the private feature branches
+is acceptable, you are strongly encouraged to keep the parts of your job
+as simple and short as possible to avoid the need to commit partially
+finished job.
+
+### 6. Misc.
 
 * **Always** test before you push. Do not push something that may break.
 
