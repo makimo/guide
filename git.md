@@ -22,31 +22,24 @@ https://confluence.atlassian.com/fisheye/using-smart-commits-298976812.html)
 * Whether implementing features or fixing bugs - always use a new branch.
   Whenever branching, choose _short_ and _descriptive_ names. Branch names
   are of the form `<type>/<name>`, where the name is comprised of words separated
-  with hyphens (not underscores). Example:
-
-```git
-# Good, specific name.
-git checkout -b fix/rabbitmq-dist-config
-
-# Bad, too vague.
-git checkout -b fix/logging
-
-# Bad, too specific. It's better to use more human-readable
-# name and put issue reference in the title/description instead.
-git checkout -b feature/PROJ-1234
-```
+  with hyphens (not underscores).
 
 * Most common branch types are `feature`, `improvement`, `fix`, `docs`,
   `refactor`, `tests`, `style`, `chore` (updating config files, build tasks
-  and the like). When branching to fix a bug or resolve an issue, include it
-  in the name:
+  and the like). The name should be human-readable, and briefly but clearly
+  describe the work the branch contains. Example:
 
-```git
-git checkout -b fix/slug-56
-```
+  ```git
+  # Good, specific name.
+  git checkout -b fix/rabbitmq-dist-config
 
-where `slug` is the project slug from the issue tracker and `56` is the issue
-number.
+  # Bad, too vague.
+  git checkout -b fix/logging
+
+  # Bad, too specific. It's better to use more human-readable
+  # name and put issue reference in the title/description instead.
+  git checkout -b feature/PROJ-1234
+  ```
 
 * When feature branch is removed from the remote (usually origin) it is
   a good idea to also remove local branches to keep repository clean and
