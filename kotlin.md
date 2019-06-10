@@ -1,14 +1,14 @@
-# Makimo Kotlin Style Guide
+# Makimo Android Style Guide
 
 This section presents coding convention used at Makimo for applications written
-in Kotlin.
+in Kotlin/Android.
 
 The convention is based on [the official Kotlin style
 guide](https://kotlinlang.org/docs/reference/coding-conventions.html).  In case
 of omitted aspects of code style or some differences between the company policy
 and Kotlin style guide, the following document gives a preferred coding rules.
 
-## Content
+## Kotlin
 
 ### 1. Line length
 
@@ -155,4 +155,83 @@ fun foo(x: Int, y: String) = Bar().apply{
     this.x = x
     this.y = y
 }
+```
+
+## XML
+
+### 1. Naming `layouts`
+
+Good naming is an absolute must for an Android project. In order to make
+searching for Android layout files easier, we use prefixes corresponding
+to their function. Accordingly:
+
+* `layout_` - Raw layouts; imported via `<layout name="...">`;
+
+* `view_` - View layout files, used by widgets and small self-contained widgets;
+
+* `activity_` - Activity layout files;
+
+* `fragment_` - Fragment layout files;
+
+
+### 2. Naming `drawables`
+
+* `btn_` - Custom button layout;
+
+* `ic_` - Icon layout;
+
+* `bkg_` - Background layout for a view;
+
+* `view_` - Generic view layout (when other type does not fit);
+
+
+### 3. Naming colors
+
+Color names should correspond to color they represent, *not* functionality
+it is related to, such as `appBarColor` or `navBarBackgroundColor`.
+Those are too hard to remember. An example of good naming:
+
+```xml
+<color name="lightCerulean">#7bd3f7</color>
+<color name="cerulean">#019fd9</color>
+<color name="tealBlue">#007bb2</color>
+<color name="pinkishRed">#f31f32</color>
+```
+
+### 4. Naming strings
+
+Strings in most applications are divided into one-time specific strings
+and generic informational strings, such as error-messages, confirmation
+buttons, retry labels and son on. Accordingly, `strings` should reflect
+this divide. Examples of generic strings used throughout the application:
+
+```xml
+<string name="proceed">Dalej</string>
+<string name="cancel">Anuluj</string>
+<string name="data_downloaded">Dane zostały pobrane</string>
+<string name="error_occurred">Wystąpił błąd podczas pobiernia danych</string>
+```
+
+Examples of specific strings:
+
+```xml
+<string name="reminder_date">Termin ważności: %1$s</string>
+<string name="policy_number">Numer polisy</string>
+<string name="coolant_type">Rodzaj płynu chłodniczego</string>
+<string name="insurance_agent">Nazwa ubezpieczyciela</string>
+```
+
+### 5. Naming dimens
+
+* All dimensions should be divisible by 2;
+* When possible, dimensions should be multiples of 8, e.g.: 8, 16, 24, 32, 40, 48.
+* Most projects should be two keylines - `keyline1`, `keyline2`.
+* Most projects should use a finite set of standard paddings; e.g.:
+
+```xml
+<dimen name="xsmall_padding">4dp</dimen>
+<dimen name="small_padding">8dp</dimen>
+<dimen name="normal_padding">16dp</dimen>
+<dimen name="large_padding">24dp</dimen>
+<dimen name="xlarge_padding">32dp</dimen>
 ```
