@@ -13,6 +13,10 @@ and project management process, such as Git or Linux commandline.
 ### Table of Contents
 
 1. [General Recommendations](https://github.com/makimo/style-guide/blob/master/general.md)
-2. [Django](https://github.com/makimo/style-guide/blob/master/django.md)
-3. [Python](https://github.com/makimo/style-guide/blob/master/python.md)
-4. [Git](https://github.com/makimo/style-guide/blob/master/git.md)
+2. [Git](https://github.com/makimo/style-guide/blob/master/git.md)
+3. [Jira](https://github.com/makimo/style-guide/blob/master/jira.md)
+4. [Django](https://github.com/makimo/style-guide/blob/master/django.md)
+5. [Python](https://github.com/makimo/style-guide/blob/master/python.md)
+6. [JavaScript](https://github.com/makimo/style-guide/blob/master/javascript.md)
+7. [Kotlin](https://github.com/makimo/style-guide/blob/master/kotlin.md)
+8. [Swift](https://github.com/makimo/style-guide/blob/master/swift.md)
