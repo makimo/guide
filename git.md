@@ -391,7 +391,32 @@ is acceptable, you are strongly encouraged to keep the parts of your job
 as simple and short as possible to avoid the need to commit partially
 finished job.
 
-### 6. Misc.
+### 6. Tags
+
+#### Adding a tag
+
+```git
+git tag <tag-name>
+```
+#### Pushing a tag to remote
+
+```git
+git push --tags
+```
+
+#### Deleting a tag locally
+
+```git
+git tag -d <tag-name>
+```
+
+#### Deleting a tag on remote
+
+```git
+git push --delete <origin> <tag-name>
+```
+
+### 7. Misc.
 
 * **Always** test before you push. Do not push something that may break.
 
