@@ -293,3 +293,8 @@ Example of well formatted xml:
 
 </FrameLayout>
 ```
+
+Android Studio provides a feature that allows you automatically sort and
+reformat layout. Just use a shortcut `Shift + Ctrl + l`. It works quite well
+and can be helpful during development process, but you have to pay
+attention to be sure, it respects rules above.
