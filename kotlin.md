@@ -235,3 +235,61 @@ Examples of specific strings:
 <dimen name="large_padding">24dp</dimen>
 <dimen name="xlarge_padding">32dp</dimen>
 ```
+
+### 6. Layouts
+
+* Always to keep 4 spaces of indentation between levels.
+* Prevent double indentation between element name and first property
+(which is a default behaviour of android studio)
+* Place `android:id` at the first position.
+* Place `style` after `android:id`.
+* Place `android:layout_width` and `android:layout_height` after `style`.
+* Try to keep similar order of properties in different layout's element.
+* Always use resources for values such as dimens, strings or colors.
+
+
+Example of well formatted xml:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/unit_3"
+        android:layout_marginTop="@dimen/unit_2"
+        android:layout_marginEnd="@dimen/unit_3"
+        android:layout_marginBottom="@dimen/unit_1">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/H5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_blue"
+            android:layout_marginStart="@dimen/unit_3"/>
+
+        <ImageView
+            android:layout_width="@dimen/unit_3"
+            android:layout_height="@dimen/unit_3"
+            android:src="@mipmap/ic_arrow_right"
+            android:padding="@dimen/unit_05"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/unit_1"/>
+
+        <View
+            style="@style/underline"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:layout_below="@+id/title"/>
+
+    </RelativeLayout>
+
+</FrameLayout>
+```
