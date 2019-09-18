@@ -100,7 +100,36 @@ some_function_name(some_argument,
                    some_other_argument, yet_another_one)
 ```
 
-#### 4. String-breaking
+#### 4. String interpolation
+
+Do not use `printf`-style string formatting in Python 3 projects
+(also known as "old-style" or `%`-formatting), as it is discouraged
+in the [python docs](https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting).
+Prefer [formatted string literals](https://docs.python.org/3/reference/lexical_analysis.html#formatted-string-literals)
+(for python 3.6+) or [`str.format(*args, **kwargs)`](https://docs.python.org/3.6/library/stdtypes.html#str.format)
+for Python 3.5 and below. If user-provided content is being formatted,
+please consider using [Template strings](https://docs.python.org/3/library/string.html#template-strings).
+
+Examples:
+
+```python
+# Bad
+my_string = 'My embedded string is: %s' % my_embedded_string
+
+# OK, if on Python 3.5 and below
+my_string = 'My embedded string is: {}'.format() 
+
+# OK
+my_string = f'My embedded string is: {my_embedded_string}'
+
+# If user_string_template was provided by the user
+user_string_template = 'My embedded string is: $embedded'
+my_string_template = Template(user_string_template).safe_substitute(
+    embedded=my_embedded_string
+)
+```
+
+#### 5. String-breaking
 
 These:
 
@@ -127,7 +156,7 @@ Sed ac sapien eu neque vehicula rhoncus.\
 
 Note that examples above play nicely with `gettext`.
 
-#### 5. Dyadic operators
+#### 6. Dyadic operators
 
 It is preferrable to:
 
@@ -164,14 +193,14 @@ truth_value = (
 )
 ```
 
-#### 6. Blank lines
+#### 7. Blank lines
 
 As a rule of thumb, readability is preferable over smaller line count.
 It is, therefore, desirable to write code with room to breathe.
 Blank lines are used to that effect. The following section describes
 _necessary_ and _sufficient_ rules for inserting them.
 
-##### 6.1. Two blank lines between top-level objects (classes, functions, variables).
+##### 7.1. Two blank lines between top-level objects (classes, functions, variables).
 
 ```python
 def foo(): pass
@@ -185,7 +214,7 @@ class Bar:
     pass
 ```
 
-##### 6.2. Module-level variables should be separated from imports with one blank line.
+##### 7.2. Module-level variables should be separated from imports with one blank line.
 
 ```python
 import sys
@@ -194,7 +223,7 @@ import argparse
 SOME_MODULE_VARIABLE = 'string'
 ```
 
-##### 6.3. Methods within class declarations are separated with one blank line.
+##### 7.3. Methods within class declarations are separated with one blank line.
 
 ```python
 class Foo:
@@ -205,7 +234,7 @@ class Foo:
         pass
 ```
 
-##### 6.4. No lines between begginning of the class declaration and first method/variable.
+##### 7.4. No lines between begginning of the class declaration and first method/variable.
 
 ```python
 def class Foo:
@@ -217,7 +246,7 @@ def class Bar:
         pass
 ```
 
-##### 6.5. No blank lines between docstring and first next statement with the exception of class docstring if no class variables are declared.
+##### 7.5. No blank lines between docstring and first next statement with the exception of class docstring if no class variables are declared.
 
 ```python
 def class Foo:
@@ -236,7 +265,7 @@ def class Bar:
         pass
 ```
 
-##### 6.6. If dunder variables are defined, separated them with one blank line.
+##### 7.6. If dunder variables are defined, separated them with one blank line.
 
 ```python
 __version__ = '1.6.7'
@@ -245,7 +274,7 @@ __all__ = ('Foo, 'Bar')
 import sys
 ```
 
-##### 6.7. One blank line between each import section (stdlib, 3rd-party, local).
+##### 7.7. One blank line between each import section (stdlib, 3rd-party, local).
 
 ```python
 import sys
@@ -256,7 +285,7 @@ from django import something
 from .local_file import LocalClass
 ```
 
-##### 6.8. One blank line before and after statements that open a new block (e.g. if-statement), with exception of statements at the first line of their block
+##### 7.8. One blank line before and after statements that open a new block (e.g. if-statement), with exception of statements at the first line of their block
 
 ```python
 if a:
@@ -293,7 +322,7 @@ elif something2:
     c = 25 + 64 + 8 + 23 + 947 + 37
 ```
 
-##### 6.9. No blank lines between docstring and first statement in method/function
+##### 7.9. No blank lines between docstring and first statement in method/function
 
 ```python
 def foo():
@@ -303,7 +332,7 @@ def foo():
     first = 'statement'
 ```
 
-##### 6.10. Two blank lines after import section (or module variable)
+##### 7.10. Two blank lines after import section (or module variable)
 
 ```python
 import sys
@@ -352,11 +381,11 @@ def foo():
     pass
 ```
 
-### 7. Imports
+#### 8. Imports
 
 Sort imports using `isort`.
 
-### 8. Docstrings and Comments
+#### 9. Docstrings and Comments
 
 Docstring conventions used at Makimo are mostly based on the three following
 documents (which we recommend to read):
@@ -377,7 +406,7 @@ particular file or module.
 
 Remember to use only double-quotes (`"`). This is for consistency mostly.
 
-#### 8.1 Google Style Example
+#### 10. Google Style Example
 
 ```python
 # -*- coding: utf-8 -*-
