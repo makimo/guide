@@ -20,3 +20,4 @@ and project management process, such as Git or Linux commandline.
 6. [JavaScript](https://github.com/makimo/style-guide/blob/master/javascript.md)
 7. [Kotlin](https://github.com/makimo/style-guide/blob/master/kotlin.md)
 8. [Swift](https://github.com/makimo/style-guide/blob/master/swift.md)
+9. [Clojure(Script)](https://github.com/makimo/style-guide/blob/master/clojure.md)
