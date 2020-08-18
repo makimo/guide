@@ -7,3 +7,12 @@ in Clojure/ClojureScript.
 
 Current source of truth is the following Clojure guide:
 https://guide.clojure.style/
+
+Below are more specific and/or exceptions to the rules given
+in the guide.
+
+### Namespaces
+
+Here is more detailed how-to specifically related to 
+declaring namespaces and imports:
+https://stuartsierra.com/2016/clojure-how-to-ns.html
