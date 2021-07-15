@@ -161,7 +161,7 @@ fun foo(x: Int, y: String) = Bar().apply{
 
 ##### 6.1 Formatting class definition
 
-If declaration is below line length limit, put if on a single line, but
+If declaration is below line length limit, put it on a single line, but
 leave one single line after opening braces:
 
 ```kotlin
