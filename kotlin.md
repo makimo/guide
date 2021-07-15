@@ -157,6 +157,58 @@ fun foo(x: Int, y: String) = Bar().apply{
 }
 ```
 
+#### 6. Classes
+
+##### 6.1 Formatting class definition
+
+If declaration is below line length limit, put it on a single line, but
+leave one single line after opening braces:
+
+```kotlin
+// Good:
+class Foo(val b: Bar) {
+    
+    fun foo() {
+        // ...
+    }
+}
+
+// Bad:
+class Foo(val b: Bar) {
+    fun foo() {
+        // ...
+    }
+}
+```
+
+If declaration is long, break it like so:
+
+```kotlin
+class Foo(
+    val a: ClassA,
+    val b: ClassB,
+    val c: ClassC,
+    val d: ClassD
+): SomeInterface {
+    
+    fun foo() {
+        // ^ Again one empty line above
+    }
+}
+```
+
+If you're declaring a `companion`, use one single line before and after:
+```kotlin
+class Foo {
+    
+    companion object {
+        const val SOME_CONST = "some-const" // Notice no separator line here ^
+    }
+    
+    val a = A()
+}
+```
+
 ## XML
 
 ### 1. Naming `layouts`
