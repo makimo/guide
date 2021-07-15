@@ -192,7 +192,7 @@ class Foo(
 ): SomeInterface {
     
     fun foo() {
-        // ^ Again no the empty line above
+        // ^ Again one empty line above
     }
 }
 ```
