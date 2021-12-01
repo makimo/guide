@@ -188,6 +188,26 @@ Fix nasty little bug ISSUE-51 #resolve #time 2h30m
 * Keep the history *clean* and *simple*. Before pushing any branch to the
   public always ensure that it conforms to the style-guide. If it doesn't:
   squash, rebase, reword commits as necessary.
+  
+* When merging multiple small commits into a single change, make sure to
+  keep high locality of the changes. In another words, if you're changing,
+  let's say, some elements of the UI, group changes
+  that occur in small vicinity of each other.
+
+* When merging multiple changes into one, make sure to _do not exceed
+  limit of 10 changes in one commit_. Additionally, always include
+  ticket/issue numbers in the commit log. For example:
+
+  ```git
+  Improve user-experience in subscription views PROJ-10
+
+  This batch includes:
+  * Tweak padding between buttons PROJ-13
+  * Ensure proper scrolling of the list-view PROJ-22
+  * Fix alpha layer on the toolbar PROJ-19
+  ```
+  
+  where `PROJ-10` is a super-ticket for all subsequent issues.
 
 ### 4. Rewriting history
 
